@@ -1,51 +1,64 @@
 variable "instance_count" {
-  description = ""
-  type = number
-  default = 1
+  description = "Number of instances to create"
+  type        = number
+  default     = 1
 }
-variable "ami_id" {
-  description = ""
-  type = string
-  default = "ami-01f629e0600d93cef"
+variable "ami" {
+  description = "AWS Image ID"
+  type        = string
+  default     = "ami-01f629e0600d93cef"
 }
 variable "subnet_id" {
-  description = ""
-  type = string
-  default = ""
+  description = "VPC Subnet ID"
+  type        = string
+  default     = ""
 }
 variable "instance_type" {
-  description = ""
-  type = string
-  default = "m5.large"
+  description = "Instance Size"
+  type        = string
+  default     = "m5.large"
 }
 variable "key_name" {
-  description = ""
-  type = string
-  default = ""
+  description = "SSH Key name"
+  type        = string
+  default     = ""
 }
 variable "user_data" {
-  description = ""
-  type = string
-  default = ""
+  description = "User data to be injected via cloud-init"
+  type        = string
+  default     = ""
 }
 variable "vpc_security_group_ids" {
-  description = ""
-  type = list(string)
-  default = []
+  description = "List of VPC security group id"
+  type        = list(string)
+  default     = []
 }
 variable "root_volume_size" {
-  description = ""
-  type = number
-  default = 100
+  description = "Main disk size"
+  type        = number
+  default     = 100
 }
-variable "instance_tags" {
-  description = ""
-  type = map(string)
-  default = {}
+variable "tags" {
+  description = "Map of tags"
+  type        = map(string)
+  default     = {}
 }
 
-variable "tag_prefix" {
-  description = ""
-  type = string
-  default = ""
+variable "owner" {
+  description = "String to be used wherever necessary"
+  type        = string
+  default     = "foo"
 }
+
+variable "associate_public_ip_address" {
+  description = "Attach or not a public ip address"
+  type        = bool
+  default     = true
+}
+
+variable "iam_instance_profile" {
+  description = "Attache an IAM instance provile"
+  type        = string
+  default     = ""
+}
+
