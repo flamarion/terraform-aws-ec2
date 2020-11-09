@@ -6,7 +6,6 @@ provider "aws" {
 
 module "ec2" {
   source                      = "../"
-  instance_count              = 1
   ami                         = "ami-07d1bb89ff2dd50fe"
   subnet_id                   = "subnet_id"
   instance_type               = "m5.large"
@@ -16,8 +15,15 @@ module "ec2" {
   associate_public_ip_address = true
   iam_instance_profile        = ""
   root_volume_size            = 100
-  tags = {
+  ec2_tags = {
     "Name" = "Owner"
+    "Env"  = "Prod"
+  }
+  add_ebs = true
+  size    = 100
+  type    = "gp2"
+  ebs_tags = {
+    "Name" = "EBS Owner"
     "Env"  = "Prod"
   }
 }

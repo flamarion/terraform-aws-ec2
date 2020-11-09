@@ -1,8 +1,3 @@
-variable "instance_count" {
-  description = "Number of instances to create"
-  type        = number
-  default     = 1
-}
 variable "ami" {
   description = "AWS Image ID"
   type        = string
@@ -38,8 +33,8 @@ variable "root_volume_size" {
   type        = number
   default     = 100
 }
-variable "tags" {
-  description = "Map of tags"
+variable "ec2_tags" {
+  description = "Map of tags assigned to the Instance"
   type        = map(string)
   default     = {}
 }
@@ -62,3 +57,26 @@ variable "iam_instance_profile" {
   default     = ""
 }
 
+variable "add_ebs" {
+  description = "Add an EBS volume to the instance"
+  type        = bool
+  default     = false
+}
+
+variable "size" {
+  description = "Size of EBS volume"
+  type        = number
+  default     = 50
+}
+
+variable "type" {
+  description = "EBS volume type"
+  type        = string
+  default     = "gp2"
+}
+
+variable "ebs_tags" {
+  description = "Map of EBS volume tags"
+  type        = map(string)
+  default     = {}
+}

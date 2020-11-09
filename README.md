@@ -1,6 +1,8 @@
 # AWS EC2 Instance Module
 
-This module is intended to create a Single or Multiple AWS EC2 Instances within a VPC.
+This module is intended to create a Single AWS EC2 Instances within a VPC.
+
+The module also allow the attachment of a single EBS volume to the instance.
 
 This module doesn't work to create instances in default VPC or attache EBS volumes.
 
@@ -12,7 +14,6 @@ https://registry.terraform.io/modules/terraform-aws-modules/ec2-instance/aws
 
 |Name|Type|Mandatory|Default Value|Description|
 |----|----|---------|-------------|-----------|
-|instance_count|number|no|1|Number of EC2 instances created|
 |ami|string|yes|ami-01f629e0600d93cef|AMI used to build the instance|
 |subnet_id|string|yes|""|Subnet ID withing a VPC|
 |instance_type|string|yes|m5.large|EC2 Instance flavor|
@@ -20,10 +21,14 @@ https://registry.terraform.io/modules/terraform-aws-modules/ec2-instance/aws
 |user_data|string|no|""|Script or Template to be injected via cloud-init|
 |vpc_security_group_ids|list(string)|[]|Security Group list|
 |root_volume_size|number|no|100|Root disk size|
-|tags|map(string)|no|{}|Map of tags in formate key value|
+|ec2_tags|map(string)|no|{}|Map of tags in formate key value|
 |owner|string|no|"foo"|String to prefix default tags and resource name|
 |associate_public_ip_address|bool|no|true|Attach or not a Public ip address|
 |iam_instance_profile|string|no|""|Instance profile name to attach if any|
+|add_ebs|bool|no|false|Add a single EBS volume to the EC2 instance|
+|size|number|no|50|EBS volume size|
+|type|string|no|"gp2"|EBS volume type|
+|ebs_tags|map(string)|no|{}|Map of string tags to be attached to the EBS volume|
 
 ## Outputs
 
