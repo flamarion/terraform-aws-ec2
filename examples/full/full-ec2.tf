@@ -1,8 +1,16 @@
 provider "aws" {
-  version = "~> 2.59"
-  region  = "eu-central-1"
+  region = "eu-central-1"
 }
 
+terraform {
+
+  required_providers {
+    aws      = "~> 3.22"
+    template = "~> 2.2"
+    random   = "~> 3.0"
+  }
+  required_version = "~> 0.14"
+}
 
 module "ec2" {
   source                      = "../"
