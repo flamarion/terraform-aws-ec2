@@ -1,10 +1,3 @@
-terraform {
-  required_version = "~> 0.12"
-
-  required_providers {
-    aws = "~> 2.59"
-  }
-}
 
 resource "aws_instance" "ec2" {
   ami                         = var.ami
