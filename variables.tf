@@ -80,3 +80,8 @@ variable "ebs_tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "cron_schedule" {
+  default = null
+  description = "(Optional) something else"
+}
